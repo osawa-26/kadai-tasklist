@@ -1,20 +1,18 @@
+<div class="row">
+  <div class="col-6">
+      
 <%= form_with(model: task, local: true) do |f| %>
 
 
 
 <% if task.errors.any? %>
 
-    <div id="error_explanation">
-     <h2>
-<%= pluralize(task.errors.count, "error") %>
- prohibited this task from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-warning">
       <ul>
-
+        
 <% task.errors.full_messages.each do |tsk| %>
-
-
-       <li>
+        
+        <li>
 <%= tsk %>
 </li>
 
@@ -25,22 +23,28 @@
 
 <% end %>
   
-
+  <div class="form-group">
 
 <%= f.label :status, "ステータス" %>
 
 
-<%= f.text_field :status %>
+<%= f.text_field :status, class: 'form-control' %>
 
+  </div>
+
+  <div class="form-group">
 
 
 <%= f.label :content, 'タスク' %>
 
   
-<%= f.text_field :content %>
+<%= f.text_field :content, class: 'form-control' %>
 
-
+    </div>
   
-<%= f.submit '入力' %>
+<%= f.submit '入力', class: 'btn btn-primary' %>
 
 <% end %>
+
+  </div>
+</div>
