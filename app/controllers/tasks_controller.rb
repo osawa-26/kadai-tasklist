@@ -11,6 +11,10 @@ class TasksController < ApplicationController
   
 
   def show
+    if logged_in?
+      @task = current_user.tasks.build
+      @tasks = current_user.tasks.order(id: :desc).page(params[:page]).per(3)
+    end
   end
 
   def new
@@ -30,6 +34,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+      @task = Task.new
   end
 
   def update
