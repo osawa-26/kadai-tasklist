@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in
   
   def index
   end
@@ -11,5 +11,13 @@ class UsersController < ApplicationController
   end
 
   def create
+    @task = 
+    
   end
+  
+  def task_params
+    params.require(:task).permit(:content)
+    params.require(:task).permit(:status)
+  end
+  
 end
