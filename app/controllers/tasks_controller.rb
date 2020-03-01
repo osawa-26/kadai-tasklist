@@ -21,7 +21,6 @@ class TasksController < ApplicationController
       flash[:success] = '正常に入力されました'
       redirect_to root_url
     else
-      @tasks = current_user.tasks.order.page(params[:page])
       flash.now[:danger] = '正常に入力されませんでした'
       render :new
     end
