@@ -8,7 +8,6 @@ class TasksController < ApplicationController
   
 
   def show
-      @task = current_user.tasks.find_by(id: params[:id])
   end
 
   def new
@@ -27,11 +26,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-      @task = current_user.tasks.find_by(id: params[:id])
   end
 
   def update
-    @task = current_user.tasks.find_by(id: params[:id])
     if @task.update(task_params)
       flash[:success] = '正常に入力されました'
       redirect_to @task
