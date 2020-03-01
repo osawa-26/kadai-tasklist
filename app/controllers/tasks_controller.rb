@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user,  only: [:show,:create,:edit,:update,:destroy]
+  before_action :correct_user,  only: [:show,:edit,:update,:destroy]
 
   def index
       @tasks = current_user.tasks.order(id: :desc).page(params[:page]).per(3)
@@ -36,7 +36,6 @@ class TasksController < ApplicationController
       flash[:success] = '正常に入力されました'
       redirect_to @task
     else
-      @task = current_user.task.order.page(params[:page])
       flash.now[:danger] = '正常に入力されませんでした'
       render :edit
     end
